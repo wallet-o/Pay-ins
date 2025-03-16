@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(21, 101, 192, 0.1);
+            width: 100%;
+            max-width: 300px;
+        }
+
+        h2 {
+            color: #1565c0;
+            text-align: center;
+            margin: 0 0 25px;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #1565c0; /* Changed from 1px to 2px */
+            border-radius: 25px;
+            color: #1565c0;
+            font-size: 0.9em;
+            background: white;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border: 2px solid #1e88e5; /* Match the thicker border on focus */
+            box-shadow: 0 0 6px rgba(21, 101, 192, 0.3);
+        }
+
+        input::placeholder {
+            color: #1565c0;
+            opacity: 0.6;
+        }
+
+        button {
+            background: linear-gradient(135deg, #1565c0, #1e88e5);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            width: 100%;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(21, 101, 192, 0.2);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(21, 101, 192, 0.3);
+        }
+
+        #error-message {
+            color: #1565c0;
+            text-align: center;
+            margin-top: 12px;
+            font-size: 0.85em;
+            display: none;
+            padding: 5px 10px;
+            border-radius: 15px;
+            background: rgba(21, 101, 192, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit">Sign In</button>
+            <div id="error-message">Invalid credentials</div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('error-message');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get the values and trim whitespace from both ends
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            
+            // Define the correct credentials
+            const correctUsername = 'pblumn';
+            const correctPassword = 'rothre';
+            
+            // Compare trimmed values with case-insensitive check
+            if (username.toLowerCase() === correctUsername.toLowerCase() && 
+                password.toLowerCase() === correctPassword.toLowerCase()) {
+                errorMessage.style.display = 'none';
+                window.location.href = 'https://wallet-o.github.io/Pay/';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
